@@ -4,6 +4,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 
 }
 
@@ -18,6 +19,7 @@ body {
     color: #F5F5F5;
     font-family: system-ui, Arial, sans-serif;
     line-height: 1.5;
+    overflow-x: hidden;
 }
 
 
@@ -32,6 +34,8 @@ body {
     --text-light: #F5F5F5;
     --text-muted: #CFCFCF;
 }
+
+
 
 
 /* ==================================================
@@ -114,6 +118,17 @@ body {
     text-decoration: none;
     white-space: nowrap;
     font-weight: 600;
+        transition:
+        filter .25s ease,
+        transform .25s ease;
+}
+
+.nav a:hover{
+    transform: scale(1.1);
+    filter:
+        drop-shadow(0 0 6px rgba(200,16,46,.9))
+        drop-shadow(0 0 16px rgba(200,16,46,.6));
+        color: var(--red);
 }
 
 /* HAMBURGER */
@@ -436,7 +451,7 @@ body {
 .ref-tab.active,
 .ref-tab:hover {
     background: var(--red);
-    box-shadow: 0 0 20px rgba(200,16,46,.6);
+
 }
 
 /* WRAPPER */
@@ -602,9 +617,63 @@ body {
 
 
 /* ==================================================
-   CONTACT / FORM
+   CONTACT
    ================================================== */
 
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 50px;
+}
+
+
+
+/* LINKEK */
+.contact-link {
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: .5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+
+    transition:
+        text-shadow .25s ease,
+        transform .25s ease;
+}
+
+/* NEON HOVER – CSAK SZÖVEG */
+.contact-link:hover {
+    transform: translateY(-2px);
+    text-shadow:
+        0 0 8px rgba(200,16,46,.8),
+        0 0 18px rgba(200,16,46,.6),
+        0 0 32px rgba(200,16,46,.4);
+}
+
+/* FACEBOOK IKON */
+.contact-facebook svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--red);
+
+    transition:
+        filter .25s ease,
+        transform .25s ease;
+}
+
+.contact-facebook:hover svg {
+    transform: scale(1.1);
+    filter:
+        drop-shadow(0 0 6px rgba(200,16,46,.9))
+        drop-shadow(0 0 16px rgba(200,16,46,.6));
+}
+
+/* FORM */
 form {
     max-width: 500px;
     margin: auto;
@@ -680,5 +749,43 @@ footer a {
 
     .about-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+
+.ref-track {
+    gap: 25px;
+}
+
+@media (max-width: 700px) {
+    .ref-track {
+        gap: 0;
+    }
+
+    .ref-item {
+        padding: 0 12px;
+    }
+}
+@media (max-width: 700px) {
+    .ref-viewport {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+}
+@media (max-width: 700px) {
+    .ref-viewport {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .ref-track {
+        transform: none !important;
+    }
+
+    .ref-item {
+        flex: 0 0 100%;
+        scroll-snap-align: center;
     }
 }

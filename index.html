@@ -178,8 +178,8 @@
     <h2>Referenciák</h2>
 
     <div class="ref-tabs">
-        <button class="ref-tab active" data-target="done">Elkészült projektek</button>
-        <button class="ref-tab" data-target="progress">Munkálatok közben</button>
+        <button class="ref-tab active btn" data-target="done">Elkészült projektek</button>
+        <button class="ref-tab btn" data-target="progress">Munkálatok közben</button>
     </div>
 
     <div class="ref-wrapper">
@@ -224,20 +224,47 @@
 </div>
 
 
-<section id="contact" class="section dark hidden">
+<section id="contact" class="section dark hidden contact">
     <h2>Kapcsolat</h2>
 
-    <form action="https://formsubmit.co/EMAIL@CIM.HU" method="POST">
+    <!-- ELÉRHETŐSÉGEK -->
+    <div class="contact-info">
+        <a href="tel:+36308326837" class="contact-link">
+            +36 30 832 6837
+        </a>
+
+        <a href="mailto:gyurkovicsl75@gmail.com" class="contact-link">
+            gyurkovicsl75@gmail.com
+        </a>
+
+        <a href="https://www.facebook.com/gyurkovicslaci"
+           target="_blank"
+           rel="noopener"
+           class="contact-link contact-facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.1V12h3.3V9.4c0-3.3 2-5.1 5-5.1 1.4 0 2.8.2 2.8.2v3h-1.6c-1.6 0-2.1 1-2.1 2V12h3.6l-.6 2.9h-3v7A10 10 0 0 0 22 12z"/>
+            </svg>
+            Facebook oldal
+        </a>
+    </div>
+
+    <!-- FORM -->
+    <form action="https://formsubmit.co/gyurkovicsl75@gmail.com" method="POST">
+        <!-- BEÁLLÍTÁSOK -->
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="Új megkeresés Gyurkovics Tető">
         <input type="hidden" name="_next" value="koszonjuk.html">
 
+        <!-- MEZŐK -->
         <input type="text" name="name" placeholder="Név" required>
         <input type="email" name="email" placeholder="Email" required>
         <textarea name="message" placeholder="Üzenet" required></textarea>
-        <button type="submit">KÜLDÉS</button>
+
+        <button class="btn" type="submit">KÜLDÉS</button>
     </form>
 </section>
-</main>
+
 
 <footer class="hidden">
     © 2026 Gyurkovics Tető | <a href="cookie.html">Cookie szabályzat</a>
