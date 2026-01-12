@@ -95,3 +95,27 @@ document.querySelector(".lightbox-close").onclick = () =>
 lightbox.onclick = e => {
     if (e.target === lightbox) lightbox.style.display = "none";
 };
+
+
+/* ============================
+   COOKIE BANNER LOGIC
+   ============================ */
+
+const cookieBanner = document.getElementById("cookie-banner");
+const cookieAccept = document.getElementById("cookie-accept");
+
+if (!localStorage.getItem("cookieAccepted")) {
+    setTimeout(() => {
+        cookieBanner.classList.remove("hidden");
+        cookieBanner.style.opacity = "1";
+        cookieBanner.style.transform = "translate(-50%, 0)";
+        cookieBanner.style.transition = "0.6s ease";
+    }, 1200);
+}
+
+cookieAccept.addEventListener("click", () => {
+    localStorage.setItem("cookieAccepted", "true");
+    cookieBanner.style.opacity = "0";
+    cookieBanner.style.transform = "translate(-50%, 20px)";
+    setTimeout(() => cookieBanner.remove(), 400);
+});
