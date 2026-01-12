@@ -24,7 +24,6 @@ nav.querySelectorAll("a").forEach(link => {
 /* ============================
    TABS
    ============================ */
-
 document.querySelectorAll(".ref-tab").forEach(tab => {
     tab.addEventListener("click", () => {
         document.querySelectorAll(".ref-tab").forEach(t => t.classList.remove("active"));
@@ -36,12 +35,15 @@ document.querySelectorAll(".ref-tab").forEach(tab => {
 });
 
 /* ============================
-   CAROUSEL (DESKTOP ONLY)
+   CAROUSEL – DESKTOP (FIXED)
    ============================ */
-
 document.querySelectorAll(".ref-carousel").forEach(carousel => {
+
+    if (window.innerWidth <= 700) return; // mobil: swipe
+
     const track = carousel.querySelector(".ref-track");
     const items = carousel.querySelectorAll(".ref-item");
+    const viewport = carousel.querySelector(".ref-viewport");
     const left = carousel.querySelector(".left");
     const right = carousel.querySelector(".right");
 
@@ -52,13 +54,24 @@ document.querySelectorAll(".ref-carousel").forEach(carousel => {
         track.style.transform = `translateX(-${index * itemWidth}px)`;
     };
 
-    left?.addEventListener("click", () => {
+    const getMaxIndex = () => {
+        const itemWidth = items[0].offsetWidth + 25;
+        const visibleItems = Math.floor(viewport.offsetWidth / itemWidth);
+        return Math.max(items.length - visibleItems, 0);
+    };
+
+    left.addEventListener("click", () => {
         index = Math.max(index - 1, 0);
         update();
     });
 
-    right?.addEventListener("click", () => {
-        index = Math.min(index + 1, items.length - 1);
+    right.addEventListener("click", () => {
+        index = Math.min(index + 1, getMaxIndex());
+        update();
+    });
+
+    window.addEventListener("resize", () => {
+        index = Math.min(index, getMaxIndex());
         update();
     });
 });
@@ -66,7 +79,6 @@ document.querySelectorAll(".ref-carousel").forEach(carousel => {
 /* ============================
    LIGHTBOX
    ============================ */
-
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = lightbox.querySelector("img");
 
