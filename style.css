@@ -262,8 +262,9 @@ body.cookie-page {
     letter-spacing: 1px;
 }
 
-.logo span {
-    color: var(--red);
+.logo img{
+
+    width: 23%;
 }
 
 /* DESKTOP NAV */
@@ -351,9 +352,15 @@ body.cookie-page {
 .hero-logo {
     font-size: clamp(2.4rem, 6vw, 3.8rem);
     font-weight: 900;
-    letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.hero-logo img{
+
+    width: 40%;
+    margin-bottom: -20px;
 }
 
 .hero-logo span {
